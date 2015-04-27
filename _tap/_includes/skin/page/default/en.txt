@@ -1,0 +1,9 @@
+﻿zero=No records found.
+one=Showing | record.
+all=Showing all | records.
+range=| - | of | records. 
+overflowleft=&laquo;
+overflowright=&raquo;
+rpp_title=Change the number of results per page.
+rpp_option=Show | per page.
+showall=Show all results.

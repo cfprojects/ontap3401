@@ -1,0 +1,17 @@
+.bbml_highlight { background-color: yellow; } 
+.bbml_codeformat { 
+	font-family: courier; 
+	background-color: gainsboro; 
+	padding: 5px; 
+}
+.bbml_quote_attribution { 
+	font-weight: bold; 
+	text-decoration: underline; 
+	color: gray; 
+} 
+.bbml_quote { 
+	margin: 5px 20px 5px 20px; 
+	border: solid silver 1px; 
+} 
+hr.bbml { height: 1px; color: black; } 
+

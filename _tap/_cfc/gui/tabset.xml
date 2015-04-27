@@ -1,0 +1,150 @@
+﻿<root>
+	<rev top="bottom" bottom="top" left="right" right="left" />
+	<size top="height" bottom="height" left="width" right="width">
+		<alt top="width" bottom="width" left="height" right="height" />
+	</size>
+	<align>
+		<top left="left" right="right" center="center" middle="center" top="left" bottom="right" />
+		<bottom left="left" right="right" center="center" middle="center" top="left" bottom="right" />
+		<left left="top" right="bottom" center="middle" middle="middle" top="top" bottom="bottom" />
+		<right left="top" right="bottom" center="middle" middle="middle" top="top" bottom="bottom" />
+	</align>
+	<event>
+		<tabselect><![CDATA[ 
+			switch (element.getAttribute('lock')) { 
+				case "1": { return false; } 
+				case "0": { element.setAttribute('lock',1); } 
+			} 
+			
+			var addFocus = (arguments.length < 2)? true: arguments[1]; 
+			var tab = (typeof arguments[0] == 'string')? document.getElementById(arguments[0]): arguments[0]; 
+			if (tab==null) { element.setAttribute('lock',0); return false; } 
+			
+			var selectedTab = document.getElementById(element.getAttribute('selectedtab')); 
+			var row = tab.parentNode.parentNode; 
+			var firstRow = selectedTab.parentNode.parentNode; 
+			var i = null; var zNode = tab; var z = 0; 
+			
+			if (tab.id == selectedTab.id && row.id == firstRow.id) { 
+				element.setAttribute('lock',0); return true; 
+			} 
+			
+			function swapZ(a,b) { 
+				var swap = a.getAttribute('z'); 
+				a.setAttribute('z',b.getAttribute('z')); 
+				b.setAttribute('z',swap); 
+				a.style.zIndex = a.getAttribute('z'); 
+				b.style.zIndex = b.getAttribute('z'); 
+			} 
+			
+			if (row.id == firstRow.id) { 
+				swapZ(tab,selectedTab); 
+				selectedTab.getElementsByTagName('div')[0].className = 'tabsetrelative'; 
+			} else { 
+				var rowsize = parseInt(element.getAttribute('rowsize')); 
+				var rowattach = element.getAttribute('rowattach'); 
+				var numrows = element.getAttribute('rowcount'); 
+				
+				swapZ(row,firstRow); 
+				
+				row.style.top = 'auto'; firstRow.style.top = 'auto'; row.style.bottom = '0px'; 
+				firstRow.style.bottom = 1+rowsize * (numrows - parseInt(firstRow.getAttribute('z'))) + 'px'; 
+				
+				row.getElementsByTagName('div')[0].className = 'tabsetfirstrow'; 
+				firstRow.getElementsByTagName('div')[0].className = 'tabsetrelative'; 
+				
+				swap = row.getElementsByTagName('h4'); 
+				for (i = 0; i < swap.length; i++) { 
+					if (swap[i].className.search(/_tabheader$/i) != -1) { 
+						if (z < parseInt(swap[i].parentNode.parentNode.getAttribute('z'))) { 
+							zNode = swap[i].parentNode.parentNode; z = zNode.getAttribute('z'); 
+						} swap[i].parentNode.className = 'tabsetrelative'; 
+					} 
+				} 
+				
+				swapZ(tab,zNode); 
+			} 
+			
+			tab.getElementsByTagName('div')[0].className = 'tabselected'; 
+			element.setAttribute('selectedtab',tab.id); 
+			
+			var contentDiv = document.getElementById(tab.id + '_content'); 
+			tab.isEmpty = (contentDiv.innerHTML.search(/^\s*$/i) < 0)? false: true; 
+			if (addFocus && tab.isEmpty == false && contentDiv.scrollTop == 0) { 
+				window.setTimeout("tap_focusTabbedElement('" + contentDiv.id + "')",0); 
+			} 
+		]]></tabselect>
+		
+		<tabfetch><![CDATA[ 
+			var tabID = arguments[0]; 
+			var a = document.getElementById(tabID + '_header').getElementsByTagName('a'); 
+			for (var i = 0; i < a.length; i++) { 
+				if (a[i].className=='tablabel') { 
+					var tab = a[i].parentNode.parentNode.getElementsByTagName('div')[0]; 
+					tab.isEmpty = (tab.innerHTML.search(/^\s*$/i) < 0)? false: true; 
+					
+					var loadIf = a[i].getAttribute('loadcondition'); 
+					if (loadIf == null || loadIf.length == 0) 
+						{ loadIf = element.getAttribute('loadcondition'); } 
+					
+					if (loadIf == null || (loadIf.length != 0 && eval(loadIf) == true)) { 
+						var gate = document.getElementById(element.id + '_gateway'); 
+						gate.setAttribute('loadTo',tabID); 
+						window.setTimeout(element.id + '_gateway_gatesend(\'' + a[i].href.replace(/^([^?]*)$/,'$1?') + '\')',0); 
+					} 
+					break; 
+				} 
+			} 
+		]]></tabfetch>
+		
+		<tabload><![CDATA[ 
+			var tab = document.getElementById(arguments[0]); 
+			if (typeof eval('window.' + tab.id + '_load')=='function') { 
+				window.setTimeout(tab.id + '_load()',0); 
+			} 
+		]]></tabload>
+		
+		<tabsetloadall><![CDATA[ 
+			function loadTab(head) { 
+				var a = head.getElementsByTagName('a'); 
+				for (var i = 0; i < a.length; i++) { 
+					if (a[i].className == 'tablabel') { 
+						var tab = head.parentNode.parentNode; 
+						tab.isEmpty = (tab.getElementsByTagName('div')[0].innerHTML.search(/^\s*$/i) < 0)? true: false; 
+						var loadIf = a[i].getAttribute('loadcondition'); 
+						if (loadIf == null || loadIf.length == 0) 
+							{ loadIf = element.getAttribute('loadcondition'); } 
+						if (loadIf == null || loadIf.length == 0 || eval(loadIf) == true) { 
+							fn = 'tap_importHTML(response,\'' + tab.id + '_content\');'; 
+							fn += '\n' + element.id + '_tabload(\'' + tab.id + '\');'; 
+							window.setTimeout('function ' + head.id + '_gaterespond(response) { ' + fn + ' }',0); 
+							var script = document.createElement('script'); 
+							script.src = a[i].href + '&csgate=' + head.id; 
+							head.appendChild(script); 
+						} 
+						return; 
+					} 
+				} 
+			} 
+			
+			var head = element.getElementsByTagName('h4'); 
+			for (var i = 0; i < head.length; i++) { loadTab(head[i]); } 
+		]]></tabsetloadall>
+		
+		<tabsetindex><![CDATA[ 
+			var selectedTab = element.getAttribute('selectedtab'); 
+		]]></tabsetindex>
+		
+		<gatesend />
+		<gateerror />
+		<gatetimeout />
+		
+		<gaterespond><![CDATA[ 
+			var tabset = element.parentNode; 
+			var loadTo = element.getAttribute('loadTo'); 
+			tap_importHTML(response,loadTo + '_content'); 
+			window.setTimeout(tabset.id + '_tabload(\'' + loadTo + '\')',0); 
+		]]></gaterespond>
+		
+	</event>
+</root>

@@ -1,0 +1,777 @@
+html, body { height: 100%; margin:0px; padding: 0px; } 
+
+form { display: inline; } 
+img { border: 0px; } 
+textarea { overflow: auto; } 
+table { empty-cells: show; } 
+
+/* this ensures appropriate styling of radio buttons and checkboxes with IE6 */
+label input { 
+	width: auto!important; 
+	margin: 0px; 
+	padding: 0px; 
+	border: 0px!important; 
+	vertical-align: baseline; 
+	background-color: expression((this.type=='radio' || this.type=='checkbox')? 'transparent': 'inherit')!important; 
+} 
+/* this should ensure appropriate styling of radio buttons and checkboxes in IE7 & Mozilla */
+input[type="checkbox"] { 
+	width: auto!important; 
+	margin: 0px; 
+	padding: 0px; 
+	border: 0px!important; 
+	vertical-align: baseline; 
+	background-color: transparent!important; 
+} 
+input[type="radio"] {
+	width: auto!important; 
+	margin: 0px; 
+	padding: 0px; 
+	border: 0px!important; 
+	vertical-align: baseline; 
+	background-color: transparent!important; 
+} 
+
+.inputvertical,
+.inputhorizontal { 
+	padding: 0px; 
+	display: block; 
+	background-color: transparent; 
+	margin: 0px -5px 0px -5px; 
+} 
+.inputvertical label,
+.inputhorizontal label { 
+	white-space: nowrap; 
+	margin: 0px 5px 0px 5px; 
+} 
+.inputvertical, 
+.inputvertical label { display: block; } 
+.inputhorizontal,
+.inputhorizontal label,
+.inputhorizontal label input, 
+.inputvertical label input { 
+	display: inline; 
+} 
+
+#tap_debug { 
+	font-family: verdana,helvetica,arial; 
+	font-size: 9pt; 
+	text-align: left; 
+	font-weight: normal; 
+	color: black; 
+	background-color: white; 
+} 
+
+div.tap_formvalidate_list { padding-left: 15px; }
+
+.tap_html_error { font-weight: bold; } 
+
+fieldset.cardstack { border: solid black 1px; } 
+legend.cardstack select option { text-transform: capitalize; } 
+.tap_cardstackheader { font-weight: bold; } 
+
+table.swapbox { 
+	font-family:verdana,helvetica,arial; 
+	font-size: 10pt; 
+} 
+fieldset.swapbox { 
+	border: solid black 1px; 
+	padding: 3px; 
+} 
+legend.swapbox { 
+	text-transform: capitalize; 
+	white-space: nowrap; 
+} 
+select.swapbox { 
+	width: 200px; 
+} 
+button.swapbox { 
+	display: block; 
+	margin: 5px; 
+	font-size: 8pt;
+	font-family: verdana, helvetica, arial; 
+	width: 3em; 
+	height: 2em; 
+	font-weight: bold; 
+} 
+
+table.accordion_vertical { 
+	border: solid black 1px; 
+	font-family: verdana,helvetica,arial; 
+	font-size: 10pt;
+} 
+table.accordion_horizontal { 
+	border: solid black 1px; 
+	font-family: verdana,helvetica,arial; 
+	font-size: 10pt;
+} 
+
+td.accordion_tab { 
+	border: 0px; 
+	padding: 2px; 
+	background-color: #D0D0D0; 
+	font-weight: bold; 
+	text-transform: capitalize; 
+} 
+td.accordion_content { 
+	padding: 0px; 
+	vertical-align: top; 
+}
+div.accordion_content { 
+	padding: 2px; 
+	vertical-align: top; 
+	border: 0px; 
+	overflow: auto; 
+} 
+
+table.accordion_vertical { border-top: 0px; } 
+table.accordion_vertical tr td.accordion_tab { border-top: solid black 1px; } 
+table.accordion_vertical tr div.accordion_content { border-top: solid black 1px; }  
+
+table.accordion_horizontal { border-left: 0px; }
+table.accordion_horizontal tr td.accordion_tab { border-left: solid black 1px; } 
+table.accordion_horizontal tr div.accordion_content_horizontal { border-left: solid black 1px; } 
+
+table.tap_calendar { 
+	border: solid black 1px; 
+	font-family: verdana,helvetica,arial; 
+	font-size: 10pt;
+}
+table.tap_calendar thead th { border: solid black 1px; } 
+table.tap_calendar thead td { 
+	background-color: #D0D0D0; 
+	padding: 3px; 
+} 
+table.tap_calendar td { 
+	border: solid black 1px; 
+	vertical-align: top; 
+} 
+a.tap_calendar { text-decoration: none; } 
+
+div.calendar { z-index: 500; } 
+
+div.menu { 
+	border: solid black 1px; 
+	background-color: #D0D0D0; 
+	white-space: nowrap; 
+	text-transform: capitalize; 
+	font-family: verdana,helvetica,arial; 
+	font-size: 10pt; 
+} 
+div.menu a { 
+	display: block; 
+	width: 100%; 
+	color: black; 
+	text-decoration: none; 
+	padding: 2px; 
+} 
+div.menu a:hover { 
+	background-color: #ECECEC; 
+} 
+
+table.tap_form { font-family: verdana,helvetica,arial; font-size: 10pt; } 
+table.tap_form select { width: 100%; } 
+table.tap_form button { margin: 5px; } 
+table.tap_form tbody tr td { vertical-align: top; } 
+col.tap_formlabel { text-align: right; white-space: nowrap; } 
+col.tap_forminput { text-align: left; } 
+td.tap_formbutton { text-align: center; } 
+tr.tap_formgroup { vertical-align: top; } 
+tr.tap_formgroup td { white-space: nowrap; } 
+tr.tap_formgroup td input { display: block; } 
+tr.tap_formgroup td select { display: block; } 
+tr.tap_formgroup td textarea { display: block; } 
+.tap_formhint { font-size: 8pt; } 
+span.tap_requiredinput { color: red; } 
+div.tap_formerror { 
+	font-weight:bold; 
+	color: #A00000; 
+	background-color: #E0E0E0; 
+	border: solid black 1px; 
+	padding: 5px; 
+	text-align: left; 
+	font-family: verdana,helvetica,arial; 
+	font-size: 10pt; 
+} 
+
+table.tap_index { 
+	border: solid black 1px; 
+	border-left: 0px; 
+	margin-top: 10px; 
+	font-family: verdana,helvetica,arial; 
+	font-size: 10pt;
+	text-align: left;
+}
+thead.tap_index tr th { 
+	border-left: solid black 1px; 
+	background-color: #D0D0D0; 
+	white-space: nowrap; 
+	padding: 3px; 
+	text-transform: capitalize; 
+} 
+thead.tap_index tr th a { 
+	color: black; 
+	text-decoration: none; 
+	background-color: transparent; 
+	background-position: right; 
+	background-repeat: no-repeat; 
+} 
+thead.tap_index tr th a.asc { 
+	padding-right: 15px; 
+	background-image: url(../_images/ontap/asc.gif); 
+} 
+thead.tap_index tr th a.desc { 
+	padding-right: 15px; 
+	background-image: url(../_images/ontap/desc.gif); 
+} 
+
+tbody.tap_index { background-color: white; } 
+tbody.tap_index tr td { 
+	border-left: solid black 1px; 
+	border-top: solid black 1px; 
+	padding: 3px; 
+} 
+tbody.tap_index tr td a { 
+	text-decoration: none; 
+} 
+tfoot.tap_index tr th.nocontent { 
+	border-left: solid black 1px; 
+	border-top: solid black 1px; 
+} 
+
+.tap_dump { margin-left: 0px; } 
+
+div.tap_treecontainer,
+div.tap_treeitem,
+a.tap_treelabel,
+span.tap_treelabel,
+div.tap_treecontent,
+div.tap_treestem { 
+	display: block; 
+	margin: 0px; 
+	padding: 0px; 
+	border: 0px; 
+	text-align: left; 
+	float: none; 
+	clear: both; 
+	white-space: nowrap; 
+	line-height: 18px; 
+	letter-spacing: normal; 
+	font-weight: normal; 
+	font-size: 14px; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+} 
+div.tap_treecontainer, 
+div.tap_treeitem { overflow: visible; } 
+
+div.tap_treeitem { 
+	white-space: nowrap; 
+	padding: 0px 0px 0px 16px; 
+	background-position: left; 
+	background-repeat: no-repeat; 
+	background-image: url(../_images/tree/branch.gif); 
+} 
+
+div.tap_treeitem.terminator { 
+	background-image: url(../_images/tree/terminator.gif); 
+} 
+
+input.tap_treeinput { 
+	display: inline; 
+	clear: none; 
+	border: 0px; 
+	width: auto; 
+	vertical-align: text-bottom; 
+	background-color: expression('transparent'); 
+} 
+div.tap_treecontent { 
+	background-position: bottom left; 
+	background-repeat: no-repeat; 
+	padding-left: 17px; 
+} 
+div.tap_treecontainer.closed div.tap_treecontent { display: none; } 
+
+div.tap_treestem { 
+	width: 15px; 
+	background-image: url(../_images/tree/line.gif); 
+	background-repeat: repeat-y; 
+	overflow: visible; 
+	float: none; 
+	clear: both; 
+	background-position: left; 
+} 
+
+a.tap_treetoggle,
+a.tap_treetoggle:link,
+a.tap_treetoggle:visited,
+a.tap_treetoggle:hover,
+a.tap_treetoggle:active { 
+	display: block; 
+	float: left; 
+	height: 15px; 
+	width: 16px; 
+	text-decoration: none!important; 
+	background-repeat: no-repeat; 
+	background-position: left; 
+	background-color: transparent; 
+	border: 0px; 
+	padding: 0px; 
+	margin: 0px 2px 0px -16px; 
+	vertical-align: text-top; 
+} 
+
+a.tap_treetoggle {
+	background-image: url(../_images/tree/close.gif); 
+} 
+
+div.tap_treeitem.closed a.tap_treetoggle { 
+	background-image: url(../_images/tree/open.gif); 
+} 
+
+.tap_treeitem.open .tap_treelabel,
+.tap_treeitem.closed .tap_treelabel,
+.tap_treelabel { 
+	background-repeat: no-repeat; 
+	background-position: left; 
+} 
+
+a.tap_treelabel,
+span.tap_treelabel { 
+	display: inline; 
+	cursor: pointer; 
+	text-decoration: none; 
+	clear: none; 
+} 
+
+.tabset_tabsetcontainer,
+.tabset_tabsetprintall { 
+	margin: 0px; 
+	padding: 0px; 
+	border: 0px; 
+	position: relative; 
+	background-color: transparent; 
+} 
+
+.tabsetrelative,
+.tabsetfirstrow,
+.tabselected { 
+	display: block; 
+	position: relative; 
+	margin: 0px; 
+	padding: 0px; 
+	border: 0px; 
+	height: 100%; 
+	width: 100%; 
+} 
+
+.tabset_tabsettoprow,
+.tabset_tabsetbottomrow,
+.tabset_tabsetleftrow,
+.tabset_tabsetrightrow,
+.tabset_tabsettab,
+h4.tabset_tabheader {
+	display: block; 
+	position: absolute; 
+	margin: 0px; 
+	padding: 0px; 
+} 
+
+.tabset_tabsetrow,
+.tabset_tabsettab,
+.tabsetrelative,
+.tabsetfirstrow,
+.tabselected { overflow: visible; } 
+
+h4.tabset_tabheader { 
+	white-space: nowrap; 
+	line-height: normal; 
+	text-align: left; 
+	text-decoration: none; 
+	border: 0px; 
+	display: block; 
+	float: none; 
+	clear: both; 
+	overflow: visible; 
+	color: black; 
+	font-weight: normal; 
+	background-color: transparent; 
+} 
+
+h4.tabset_tabheader a,
+h4.tabset_tabheader a:hover { 
+	white-space: nowrap; 
+	text-align: left; 
+	text-decoration: none; 
+	line-height: normal; 
+	font-weight: normal; 
+	color: black!important; 
+	text-transform: capitalize; 
+	padding: 1px 5px 1px 5px; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	display: block; 
+	cursor: pointer; 
+	border-top-left-radius: 5px; 
+	border-top-right-radius: 5px; 
+} 
+
+.tabset_tabsettab, 
+h4.tabset_tabheader a, 
+h4.tabset_tabheader a:hover, 
+.tabsetfirstrow .tabselected .tabsetrelative .tabselected,
+.tabsetfirstrow .tabselected .tabset_tabsettab h4.tabset_tabheader a,
+.tabsetfirstrow .tabselected .tabset_tabsettab h4.tabset_tabheader a:hover { 
+	background-color: #EAEAF0; 
+} 
+.tabsetfirstrow .tabselected,
+.tabsetfirstrow .tabselected h4.tabset_tabheader a,
+.tabsetfirstrow .tabselected h4.tabset_tabheader a:hover, 
+.tabselected .tabsetfirstrow .tabselected .tabsetfirstrow .tabselected, 
+.tabselected .tabsetfirstrow .tabselected h4.tabset_tabheader a,
+.tabselected .tabsetfirstrow .tabselected h4.tabset_tabheader a:hover { 
+	background-color: #FFFFFF; 
+} 
+
+.tabset_tabsettab, 
+h4.tabset_tabheader a, 
+h4.tabset_tabheader a:hover { 
+	border: solid 1px; 
+	border-color: #909090 #000000 #000000 #909090; 
+} 
+
+@media screen { 
+	h4.tabset_tabheader a, 
+	h4.tabset_tabheader a:hover { 
+		font-size: 14px; 
+		visibility: hidden; 
+	} 
+	h4.tabset_tabheader a.tablabel, 
+	h4.tabset_tabheader a.tablabel:hover { 
+		font-size: 14px; 
+		visibility: visible; 
+	} 
+	h4.tabset_tabheader a.tablabel:hover,
+	.tabsetfirstrow .tabselected .tabsetrelative h4.tabset_tabheader a.tablabel:hover { 
+		background-color: #A0C0E0; 
+		color: #FFF0F0!important; 
+	} 
+	.tabsetfirstrow .tabselected h4.tabset_tabheader a.tablabel:hover {
+		background-color: #FFFFFF; 
+		color: black!important; 
+	} 
+} 
+
+@media print { 
+	.tabset_tabsetcontainer h4.tabset_tabheader a, 
+	.tabset_tabsetcontainer h4.tabset_tabheader a:hover { 
+		visibility: hidden; 
+		font-size: 14px; 
+	} 
+	.tabset_tabsetcontainer h4.tabset_tabheader a.tablabel, 
+	.tabset_tabsetcontainer h4.tabset_tabheader a.tablabel:hover { 
+		visibility: visible; 
+		font-size: 14px; 
+	} 
+	
+	.tabset_tabsetprintall h4.tabset_tabheader a, 
+	.tabset_tabsetprintall h4.tabset_tabheader a:hover { display: none; } 
+	.tabset_tabsetprintall h4.tabset_tabheader a.tablabel, 
+	.tabset_tabsetprintall h4.tabset_tabheader a.tablabel:hover { 
+		display: block; 
+		font-size: 12pt; 
+		background-color: transparent!important; 
+		border: 0px transparent!important; 
+		margin: 12pt 0px 4pt 0px; 
+		padding: 0px; 
+	} 
+} 
+@media aural {
+	h4.tabset_tabheader a, 
+	h4.tabset_tabheader a:hover { display: none; } 
+	h4.tabset_tabheader a.tablabel, 
+	h4.tabset_tabheader a.tablabel:hover { display: inline; } 
+} 
+
+.tabset_tabsettoprow h4.tabset_tabheader { margin: 0px -3px 0px -3px; } 
+.tabset_tabsetbottomrow h4.tabset_tabheader { margin: 0px -3px 0px -3px; } 
+.tabset_tabsetleftrow h4.tabset_tabheader { margin: -3px 0px -3px 0px; } 
+.tabset_tabsetrightrow h4.tabset_tabheader { margin: -3px 0px -3px 0px; } 
+
+.tabset_tabsettoprow h4.tabset_tabheader a,
+.tabset_tabsettoprow h4.tabset_tabheader a:hover { margin: 0px 2px 2px 2px; } 
+
+.tabset_tabsetbottomrow h4.tabset_tabheader a,
+.tabset_tabsetbottomrow h4.tabset_tabheader a:hover { margin: 2px 2px 0px 2px; } 
+
+.tabset_tabsetleftrow h4.tabset_tabheader a,
+.tabset_tabsetleftrow h4.tabset_tabheader a:hover { margin: 2px 2px 2px 0px; } 
+
+.tabset_tabsetrightrow h4.tabset_tabheader a,
+.tabset_tabsetrightrow h4.tabset_tabheader a:hover { margin: 2px 0px 2px 2px; } 
+
+.tabset_tabcontent { 
+	margin: 0px; 
+	padding: 3px; 
+	border: 0px; 
+	overflow: hidden; 
+} 
+@media screen { 
+	.tabset_tabcontent, 
+	.tabsetfirstrow .tabset_tabcontent .tabset_tabcontent { visibility: hidden; } 
+	.tabsetfirstrow .tabset_tabcontent, 
+	.tabsetfirstrow .tabset_tabcontent .tabsetfirstrow .tabset_tabcontent { visibility: visible; } 
+} 
+@media print { 
+	.tabset_tabsetcontainer .tabset_tabcontent, 
+	.tabset_tabcontent .tabset_tabsetcontainer .tabset_tabcontent { visibility: hidden; } 
+	.tabset_tabsetcontainer .tabsetfirstrow .tabset_tabcontent, 
+	.tabset_tabcontent .tabset_tabsetcontainer .tabsetfirstrow .tabset_tabcontent { visibility: visible; } 
+	.tabset_tabsetprintall .tabsetfirstrow .tabset_tabcontent { visibility: visible; overflow: visible; } 
+} 
+
+.tabsetfirstrow .tabselected h4.tabset_tabheader a,
+.tabsetfirstrow .tabselected h4.tabset_tabheader a:hover { 
+	color: black; 
+	text-decoration: none; 
+	font-weight: normal; 
+	line-height: normal; 
+} 
+
+@media print { 
+	.tabset_tabsetprintall .tabset_tabsettab, 
+	.tabset_tabsetprintall .tabset_tabsettoprow,
+	.tabset_tabsetprintall .tabset_tabsetbottomrow,
+	.tabset_tabsetprintall .tabset_tabsetleftrow,
+	.tabset_tabsetprintall .tabset_tabsetrightrow,
+	.tabset_tabsetprintall .tabset_tabsetfirstrow,
+	.tabset_tabsetprintall .tabset_tabcontent { 
+		height: auto; 
+		display: block; 
+		position: relative; 
+		visibility: visible; 
+		overflow: visible; 
+	} 
+	
+	.tabset_tabsetprintall .tabset_tabsettoprow, 
+	.tabset_tabsetprintall .tabset_tabsetbottomrow,
+	.tabset_tabsetprintall .tabset_tabsetleftrow,
+	.tabset_tabsetprintall .tabset_tabsetrightrow,
+	.tabset_tabsetprintall .tabset_tabsetfirstrow,
+	.tabset_tabsetprintall .tabset_tabsettab, 
+	.tabset_tabsetprintall h4.tabset_tabheader { 
+		background-color: transparent; 
+		display: block; 
+		position: relative; 
+		padding: 0px; 
+		margin: 0px; 
+		border: 0px; 
+	} 
+	
+	.tabset_tabsetprintall h4.tabset_tabheader a,
+	.tabset_tabsetprintall h4.tabset_tabheader a:hover { display: none; } 
+	.tabset_tabsetprintall h4.tabset_tabheader a.tablabel
+	.tabset_tabsetprintall h4.tabset_tabheader a.tablabel:hover { 
+		display: inline; 
+		position: relative; 
+		border: 0px; 
+		font-weight: bold; 
+		margin: 0px 0px 5px 0px; 
+		color: black; 
+		background-color: transparent; 
+	} 
+} 
+
+.pages { 
+	display: block; 
+	float: none; 
+	clear: both; 
+} 
+.pages,
+.pages a.page,
+.pages a.page:hover {
+	font-size: 9pt; 
+	font-family: Verdana, Tahoma, Helvetica, Arial; 
+} 
+.pages a.page,
+.pages a.page:hover { 
+	display: block; 
+	float: left; 
+	padding: 0px 3px 0px 0px; 
+	margin: 0px 0px 0px 0px 0px; 
+	text-decoration: none; 
+	text-align: right; 
+} 
+.pages .pagecount { 
+	display: block; 
+	float: left; 
+	padding: 0px; 
+	margin: 0px 10px 0px 0px; 
+} 
+.pages .number {
+	font-weight: bold;
+}
+.pages .pageprefix,
+.pages .pagesuffix { 
+	display: block; 
+	float: left; 
+	padding: 0px; 
+	margin: 0px; 
+} 
+.pages .pagelist { 
+	display: block; 
+	float: left; 
+	padding: 0px; 
+	margin: 0px 3px 0px 0px;
+	white-space: nowrap; 
+} 
+.pages .pageoffset {
+	display: block; 
+	float: left; 
+	padding: 0px; 
+	margin: 0px; 
+	margin-right: -3px; 
+	white-space: nowrap; 
+} 
+.pages .fixForIERelativePositionBug { 
+	position: relative; 
+	display: block; 
+	float: left; 
+	margin-left: 3px; 
+} 
+
+.pages .pageoverflow { 
+	display: block; 
+	float: left; 
+} 
+.pages .pageoverflow a.overflow,
+.pages .pageoverflow a.overflow:hover { 
+	display: block; 
+	float: left; 
+	font-family: "Courier New", Courier, monospace; 
+	font-size: 20px; 
+	line-height: 60%; 
+	text-decoration: none; 
+	margin: 0px 2px 0px 2px; 
+} 
+.pages .pageoverflow span.overflow {
+	display: block; 
+	position: absolute; 
+	top: -3px; 
+	left: 2px; 
+	background-color: #E0E0E0; 
+	border: solid 1px; 
+	border-color: #909090 #000000 #000000 #909090; 
+	width: 230px; 
+	overflow: auto; 
+	margin: 0px 0px 0px 0px; 
+	padding: 0px 0px 0px 0px; 
+	z-index: 2; 
+} 
+.pages .pageoverflow.next a.overflow { 
+	margin-left: 3px; 
+} 
+.pages .pageoverflow.previous span.overflow {
+	left: auto; 
+	right: 0px; 
+} 
+.pages .pageoverflow.previous span.overflow a.page {
+	float: right; 
+} 
+.pages .pageoverflow span.overflow a.page,
+.pages .pageoverflow span.overflow a.page:hover {
+	width: 25px; 
+	margin: 3px 3px 3px 3px; 
+	padding: 0px 0px 0px 0px; 
+} 
+.pages .resultsperpage { 
+	display: block; 
+	float: left; 
+} 
+.pages .resultsperpage img.rpp { 
+	cursor: pointer; 
+	display: block; 
+	float: left; 
+	cursor: hand; 
+	margin-left: 2px; 
+} 
+.pages .rpp_optionlist { 
+	display: none; 
+	position: absolute; 
+	top: -3px; 
+	left: 0px; 
+	background-color: #E0E0E0; 
+	border: solid 1px; 
+	border-color: #909090 #000000 #000000 #909090; 
+	padding: 0px 0px 0px 0px; 
+	margin: 0px 0px 0px 0px; 
+	width: 150px; 
+	z-index: 3; 
+} 
+.pages .pagelist .rpp_optionlist {
+	left: 15px; 
+} 
+.pages .rpp_optionlist a { 
+	display: block;
+	color: #000000;
+	width: 148px; 
+	float: none; 
+	clear: both; 
+	padding: 3px 3px 3px 3px;
+	margin: 0px; 
+	white-space: nowrap; 
+	text-align: left; 
+	text-decoration: none; 
+} 
+.pages .rpp_optionlist a:hover {
+	background-color: #A0B0F0; 
+	color: navy; 
+} 
+.pages .rpp_actionelement { 
+	display: block; 
+	float: left; 
+	height: 15px; 
+	width: 15px; 
+	padding: 0px; 
+	margin: 0px 0px 0px 5px; 
+	background-position: top left; 
+	background-repeat: no-repeat; 
+} 
+.pages a.current.page { 
+	background-color: #D0E0FF; 
+	color: black; 
+	font-weight: bold; 
+	border: solid 1px; 
+	border-color: #60A0E0 #000060 #000060 #60A0E0; 
+	padding: 0px 2px 0px 2px; 
+	margin: 0px 2px 0px 0px; 
+} 
+
+.priornext { overflow: visible; height: 1em; } 
+.priornext a { text-decoration: none; } 
+.priornext .previous { float: left; } 
+.priornext .next { float: right; } 
+
+@media print { 
+	.pages .pagelist, 
+	.pages .resultsperpage, 
+	.priornext { display: none; } 
+} 
+
+@media aural { 
+	.pages .resultsperpage img.rpp { display: none; } 
+	.pages .rpp_optionlist { display: inline; } 
+} 
+
+.tap_datepicker { 
+	display: none; 
+} 
+
+@media screen { 
+	.tap_datepicker { 
+		display: inline-block; 
+		width: 20px; 
+		cursor: pointer; 
+		background-repeat: no-repeat; 
+		background-position: left; 
+		background-image: url(../_images/ontap/datepicker.gif); 
+	} 
+} 

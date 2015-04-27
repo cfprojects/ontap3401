@@ -1,0 +1,46 @@
+body { background-color: #FFFFF0; } 
+a { text-decoration: none; font-weight: bold; } 
+a:link,a:visited { color: #0060A0; } 
+a:hover { 
+	background-color: #6080FF; 
+	color: white; 
+} 
+
+#ontap_subtitle { 
+	font-size: 14pt; 
+	font-weight: normal; 
+	font-family: helvetica; 
+	padding: 3px; 
+	color: #E0E0FF; 
+	background-color: gray; 
+	border: solid 1px; 
+	border-color: #E0E0FF black black #E0E0FF; 
+} 
+
+div.doc_section { 
+	color: #4060A0; 
+	background-color: #D0E0FF; 
+	padding: 3px; 
+} 
+
+div.tap_treeitem { 
+	background-image: url(../_images/tree/branch.gif); 
+} 
+
+div.tap_treeitem.terminator { 
+	background-image: url(../_images/tree/terminator.gif); 
+} 
+
+div.tap_treestem { 
+	background-image: url(../_images/tree/line.gif); 
+} 
+
+a.tap_treetoggle { 
+	background-image: url(../_images/tree/close.gif); 
+	margin-top: 3px!important; 
+} 
+
+div.tap_treeitem.closed a.tap_treetoggle { 
+	background-image: url(../_images/tree/open.gif); 
+} 
+

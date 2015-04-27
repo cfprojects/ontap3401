@@ -1,0 +1,2 @@
+name=Or
+describe=or
